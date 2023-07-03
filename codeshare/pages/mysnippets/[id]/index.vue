@@ -45,6 +45,9 @@
 </script>
 
 <template>
+    <div id="login" v-if="!auth.currentUser">
+        <el-button @click="navigateTo('/login')" id="login-btn" type="primary">LogIn</el-button>
+    </div>
     <span><strong id="title">{{ docSnap.data().title }}</strong></span>
     <p>[{{ docSnap.data().createdate }}]</p>
     <div id="actions">
@@ -78,6 +81,15 @@
 .access{
     width: 250px;
     margin-right: 0.5rem;
+}
+
+#login{
+    padding: 0.5rem;
+    margin-bottom: 1.6rem;
+}
+
+#login-btn{
+    float: right;
 }
 
 

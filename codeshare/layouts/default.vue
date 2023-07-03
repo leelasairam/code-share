@@ -7,7 +7,6 @@
         <el-menu-item index="1"><NuxtLink class="link" to="/home">Home</NuxtLink></el-menu-item>
         <el-menu-item index="2"><NuxtLink class="link" to="/mysnippets">Your Snippets</NuxtLink></el-menu-item>
         <el-menu-item index="3"><NuxtLink class="link" to="/profile">Profile</NuxtLink></el-menu-item>
-        <el-menu-item index="4"><NuxtLink class="link" to="/login">Login</NuxtLink></el-menu-item>
     </el-menu>
 
     <div>

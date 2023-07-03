@@ -6,7 +6,8 @@
     function SignIn(){
         signInWithPopup(auth, provider)
         .then((result) => {
-            console.log(result.user)
+            //console.log(result.user)
+            navigateTo('/home');
         })
         .catch((error) => {
             console.log(error.message)
