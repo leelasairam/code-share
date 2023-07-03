@@ -1,12 +1,7 @@
 <script setup>
     const{$auth:auth} = useNuxtApp();
     function IsLoggedIn(){
-        if(auth.currentUser){
-            navigateTo('/home')
-        }
-        else{
-            navigateTo('/login')
-        }
+        navigateTo("/mysnippets")
     }
 </script>
 

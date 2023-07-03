@@ -43,8 +43,8 @@
         <el-card class="box-card card1">
             <div class="AllCodes">
                 <div class="inp-content">
-                    <label for="lang">SELECT LANGUAGE : </label>
-                    <select name="lang" v-model="codes[k].language">
+                    <label for="lang">Choose Language : </label>
+                    <select class="select" placeholder="Language" name="lang" v-model="codes[k].language">
                         <option v-for="i in AllLangs" :value="i">{{ i }}</option>
                     </select>
                     <input  placeholder="file name" v-model="codes[k].title" />
@@ -56,9 +56,9 @@
 
     <div id="actions">
         <p v-if="codes.length<=1">Give the title and click "+ Add File" to start adding files.</p>
-        <label v-if="codes.length<=1" for="title">Enter title : </label>
+        
         <input name="title" v-if="codes.length<=1" v-model="title" placeholder="Async/Await in javascript" />
-        <el-button type="warning" @click="AddInstance">+ Add File</el-button>
+        <el-button type="warning" size="small" @click="AddInstance">+ Add File</el-button>
         <el-button v-if="codes.length>1" type="primary" @click="CreateCode">Save</el-button>
     </div>
 
@@ -98,5 +98,9 @@
 
 #actions input{
     margin-right: 0.4rem;
+}
+
+.select{
+    margin:0.2rem
 }
 </style>
