@@ -12,7 +12,7 @@
     const docRef = doc(db, "codes", `${id}`);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-        if(docSnap.data().createdby!=`${auth.currentUser.uid}`){
+        if(docSnap.data().createdby!=`${auth.currentUser.uid}` && !docSnap.data().write_access.includes(`${auth.currentUser.email}`)){
             navigateTo('/');
         }
         accessusers.value = [...docSnap.data().write_access];
