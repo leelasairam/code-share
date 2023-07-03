@@ -2,6 +2,7 @@
     definePageMeta({
         middleware: 'auth'
     })
+
     const{$firestore:db, $doc:doc,$getDoc:getDoc, $updateDoc:updateDoc, $auth:auth} = useNuxtApp();
     const {id} = useRoute().params;
     //console.log(id);
@@ -11,6 +12,9 @@
     const docRef = doc(db, "codes", `${id}`);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
+        if(docSnap.data().createdby!=`${auth.currentUser.uid}`){
+            navigateTo('/');
+        }
         accessusers.value = [...docSnap.data().write_access];
     } else {
         alert("No such document!");
@@ -25,9 +29,10 @@
 
     const newcodes = ref([{id:null,title:null,code:null,language:null}]);
     const count = ref(0);
-    let rowid = codeitems.value.length;
+    let rowid = ref(0);
+    rowid.value = codeitems.value.length;
     function AddNewInstance(){
-        newcodes.value.push({id:rowid++,title:null,code:null,language:null})
+        newcodes.value.push({id:rowid.value++,title:null,code:null,language:null})
         count.value++;
     }
 
@@ -54,12 +59,16 @@
         const t = accessusers.value.filter((e)=>e!=email);
         accessusers.value = [...t];
     }
+
+    function DeleteItem(id){
+        codeitems.value = codeitems.value.filter((i)=>i.id!=id)
+    }
     
 </script>
 
 <template>
 
-<div>
+<div><br/>
         <el-card class="box-card">
             <template #header>
                 <div class="card-header">
@@ -79,7 +88,7 @@
     <label for="title">Title : </label>
     <input name="title" id="inp" v-model="title"/>
     <template v-for="i in codeitems" :key="i.id">
-        <p><strong>{{ i.title }}</strong></p>
+        <p><strong>{{ i.title }}</strong> <span><el-button @click="DeleteItem(i.id)" type="danger" link>Delete</el-button></span></p>
         <MonacoEditor :options="{ theme: 'vs-dark' }" class="editor" v-model="i.code" :lang="i.language" />
     </template>
 
@@ -126,4 +135,15 @@
     margin-left: 0.4rem;
 }
 
+p span{
+    margin-left: 1rem;
+}
+
+p span a{
+    color: brown;
+}
+
+.card-header{
+    color: blue;
+}
 </style>

@@ -33,12 +33,17 @@
     }
 
     async function Delete(){
-        try{
-            await deleteDoc(doc(db, "codes", `${id}`));
-            navigateTo('/mysnippets')
+        if(docSnap.data().createdby === `${auth.currentUser.uid}`){
+            try{
+                await deleteDoc(doc(db, "codes", `${id}`));
+                navigateTo('/mysnippets')
+            }
+            catch(error){
+                alert(error)
+            }
         }
-        catch(error){
-            alert(error)
+        else{
+            alert('You do not have access to delete this snippet.')
         }
     }
 

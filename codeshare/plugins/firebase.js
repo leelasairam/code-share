@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth"
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth"
 import { getFirestore, collection, addDoc, query, where, getDocs, getDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore'
 
 export default defineNuxtPlugin(() => {
@@ -21,7 +21,7 @@ export default defineNuxtPlugin(() => {
 
     return {
         provide: {
-          auth,firestore,signInWithPopup,GoogleAuthProvider,signOut, collection, addDoc, query, where, getDocs, getDoc, doc, updateDoc, deleteDoc
+          auth,firestore,signInWithPopup,GoogleAuthProvider,signOut, collection, addDoc, query, where, getDocs, getDoc, doc, updateDoc, deleteDoc, onAuthStateChanged
         }
       }
     

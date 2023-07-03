@@ -22,7 +22,22 @@
             <NuxtLink class="title" :to="`/mysnippets/${i.id}`">{{ i.title }}</NuxtLink>
             <p>{{ i.createdate }}</p>
         </div>
-   </template>
+
+    </template>
+
+    <!--No data-->
+
+    <template v-if="codes.length===0">
+        <el-card class="box-card">
+            <template #header>
+                <div class="card-header">
+                    <span>No Data</span>
+                </div>
+            </template>
+            <el-button @click="navigateTo('/home')" class="button" type="primary">New</el-button>
+        </el-card>
+    </template>
+
 </template>
 
 <style scoped>

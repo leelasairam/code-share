@@ -19,15 +19,15 @@
                 title: 'Done',
                 message: h('i', { style: 'color: teal' }, 'Logout successfully'),
             })
-            navigateTo('/login');
         })
         .catch((error) => {
             ElNotification({
                 title: 'error',
                 message: h('i', { style: 'color: red' }, error),
             })
-            navigateTo('/login');
         });
+        localStorage.setItem("IsLoggedIn", false);
+        navigateTo('/login');
     }
 </script>
 

@@ -12,6 +12,7 @@
 
 <template>
     <br/>
+    <h2>Store you code snippets & Share with anyone with edit access.</h2>
    <button @click="IsLoggedIn">Get Started</button>
 </template>
 
@@ -60,5 +61,9 @@ button:hover:before, button:focus:before {
 
 button:active {
   transform: scale(0.9);
+}
+
+h2{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 </style>

@@ -39,7 +39,7 @@
 
 <template>
     
-    <template v-for="k in count">
+    <template v-for="k in count" v-if="auth.currentUser">
         <el-card class="box-card card1">
             <div class="AllCodes">
                 <div class="inp-content">

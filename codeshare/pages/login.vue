@@ -6,7 +6,7 @@
     function SignIn(){
         signInWithPopup(auth, provider)
         .then((result) => {
-            //console.log(result.user)
+            localStorage.setItem("IsLoggedIn", true);
             navigateTo('/home');
         })
         .catch((error) => {
@@ -17,6 +17,7 @@
 
 <template>
     <div id="content">
+        <h2>SignIn by clicking below button :</h2>
         <el-button class="el-button" type="success" size="large" round @click="SignIn">Continue With Google</el-button>
     </div>
 </template>
