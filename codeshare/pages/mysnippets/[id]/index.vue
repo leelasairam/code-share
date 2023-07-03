@@ -33,7 +33,7 @@
     }
 
     async function Delete(){
-        if(docSnap.data().createdby === `${auth.currentUser.uid}`){
+        if(docSnap.data().createdby === `${auth.currentUser.uid}` && docSnap.data().createdby != null){
             try{
                 await deleteDoc(doc(db, "codes", `${id}`));
                 navigateTo('/mysnippets')
