@@ -59,7 +59,7 @@
         
         <input name="title" v-if="codes.length<=1" v-model="title" placeholder="Async/Await in javascript" />
         <el-button type="warning" size="small" @click="AddInstance">+ Add File</el-button>
-        <el-button v-if="codes.length>1" type="primary" @click="CreateCode">Save</el-button>
+        <el-button v-if="codes.length>1" size="small" type="primary" @click="CreateCode">Save</el-button>
     </div>
 
 </template>
